@@ -24,14 +24,13 @@ $whoops->register();
 $request = new \Http\HttpRequest($_GET, $_POST, $_COOKIE, $_FILES, $_SERVER);
 $response = new \Http\HttpResponse;
 
-$dispatcher = \FastRoute\simpleDispatcher(function (\FastRoute\RouteCollector $r) {
-	$r->addRoute('GET', '/hello-world', function() {
-		echo 'Hello World';
-	});
-	$r->addRoute('GET', '/hello-world2', function() {
-		echo 'Hello World2';
-	});
-});
+$routeDefinitionCallback = function (\FastRoute\RouteCollector $r) {
+	$routes = include('Routes.php');
+	foreach ($routes as $route) {
+		$r->addRoute($route[0], $route[1], $route[2]);
+	}
+};
+$dispatcher = \FastRoute\simpleDispatcher($routeDefinitionCallback);
 
 $routeInfo = $dispatcher->dispatch($request->getMethod(), $request->getPath());
 switch($routeInfo[0]) {
