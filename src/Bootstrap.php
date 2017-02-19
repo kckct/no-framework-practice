@@ -43,13 +43,11 @@ switch($routeInfo[0]) {
 		$response->setStatusCode(405);
 		break;
 	case \FastRoute\Dispatcher::FOUND:
-		//$handler = $routeInfo[1];
-		//$vars = $routeInfo[2];
-		//call_user_func($handler, $vars);
 		$className = $routeInfo[1][0];
 		$method = $routeInfo[1][1];
 		$vars = $routeInfo[2];
-		$class = new $className;
+
+		$class = new $className($response);
 		$class->$method($vars);
 		break;
 }
