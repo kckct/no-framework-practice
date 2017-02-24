@@ -22,7 +22,7 @@ class Homepage
 	public function show()
 	{
 		$data = [
-			'name' => $this->request->getParameter('name', 'stranger');
+			'name' => $this->request->getParameter('name', 'stranger'),
 		];
 		$html = $this->renderer->render('Hello {{name}}', $data);
 		$this->response->setContent($html);
