@@ -17,4 +17,12 @@ $injector->share('Http\HttpResponse');
 
 $injector->alias('App\Template\Renderer', 'App\Template\MustacheRenderer');
 
+$injector->define('Mustache_Engine', [
+	':options' => [
+		'loader' => new Mustache_Loader_FilesystemLoader(dirname(__DIR__) . '/templates', [
+			'extension' => '.html',
+		]),
+	],
+]);
+
 return $injector;
