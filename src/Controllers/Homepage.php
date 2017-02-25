@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use Http\Response;
 use Http\Request;
-use App\Template\Renderer;
+use App\Template\FrontendRenderer;
 
 class Homepage
 {
@@ -12,7 +12,7 @@ class Homepage
 	private $request;
 	private $renderer;
 
-	public function __construct(Request $request, Response $response, Renderer $renderer)
+	public function __construct(Request $request, Response $response, FrontendRenderer $renderer)
 	{
 		$this->request = $request;
 		$this->response = $response;
