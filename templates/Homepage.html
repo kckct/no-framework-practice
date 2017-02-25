@@ -1,6 +1,4 @@
-{% for item in menuItems %}
-	<a href="{{ item.href }}">{{ item.text }}</a><br>
-{% endfor %}
-
-<h1>Hello World</h1>
-Hello {{ name }}
+{% extends "Layout.html" %}
+{% block content %}
+	{{ content }}
+{% endblock %}
