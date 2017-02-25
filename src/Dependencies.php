@@ -15,7 +15,7 @@ $injector->define('Http\HttpRequest', [
 $injector->alias('Http\Response', 'Http\HttpResponse');
 $injector->share('Http\HttpResponse');
 
-$injector->alias('App\Template\Renderer', 'App\Template\MustacheRenderer');
+$injector->alias('App\Template\Renderer', 'App\Template\TwigRenderer');
 
 $injector->define('Mustache_Engine', [
 	':options' => [
