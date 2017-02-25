@@ -37,4 +37,6 @@ $injector->delegate('Twig_Environment', function () use ($injector) {
 	return $twig;
 });
 
+$injector->alias('App\Template\FrontendRenderer', 'App\Template\FrontendTwigRenderer');
+
 return $injector;
